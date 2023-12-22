@@ -1,4 +1,4 @@
-# Unifi-API-Browser v2.0.17
+# Unifi-API-Browser v2.0.23
 
  Docker for unifi browser <https://github.com/Art-of-WiFi/UniFi-API-browser>
 
@@ -26,6 +26,25 @@ To get started this is the minimum number of options, be sure to append each env
 `docker run --name unifiapibrowser -p:8000:8000 -e USER= -e PASSWORD= -e UNIFIURL= -e APIBROWSERPASS=    scyto/unifibrowser`
 
 This will run the container on host port 8000/tcp.
+
+## Using Docker Compose / Stack
+
+This is the fastest way to get running for unifios and doesn't require the use of the hash
+```
+version: '3.8'
+services:
+  unifiapibrowser:
+    ports:
+    - 8010:8000
+    environment:
+      USER: unifi console local account 
+      PASSWORD: unifi console password
+      NOAPIBROWSERAUTH: 1 # disables auth to apibrowser
+      UNIFIURL: https://192.168.1.1
+      PORT: 443
+      DISPLAYNAME: Home
+    image: scyto/unifibrowser
+ ```   
 
 ## Using Multiple Unifi Controllers
 
